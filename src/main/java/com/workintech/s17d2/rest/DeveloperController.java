@@ -1,8 +1,10 @@
 package com.workintech.s17d2.rest;
 
 import com.workintech.s17d2.model.*;
+import com.workintech.s17d2.tax.DeveloperTax;
 import com.workintech.s17d2.tax.Taxable;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +16,8 @@ public class DeveloperController {
     private final Taxable taxable;
     public Map<Integer, Developer> developers;
 
-    public DeveloperController(Taxable taxable) {
+    @Autowired
+    public DeveloperController(DeveloperTax taxable) {
         this.taxable = taxable;
     }
 
