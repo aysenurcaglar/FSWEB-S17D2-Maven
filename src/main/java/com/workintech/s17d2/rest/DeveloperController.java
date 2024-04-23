@@ -53,15 +53,18 @@ public class DeveloperController {
 
         switch (experience) {
             case JUNIOR:
-                salary -= taxable.getSimpleTaxRate();
+                double simpleTax = salary * (taxable.getSimpleTaxRate() / 100);
+                salary -= simpleTax;
                 developer = new JuniorDeveloper(id, newDeveloper.getName(), salary);
                 break;
             case MID:
-                salary -= taxable.getMiddleTaxRate();
+                double middleTax = salary * (taxable.getMiddleTaxRate() / 100);
+                salary -= middleTax;
                 developer = new MidDeveloper(id, newDeveloper.getName(), salary);
                 break;
             case SENIOR:
-                salary -= taxable.getUpperTaxRate();
+                double upperTax = salary * (taxable.getUpperTaxRate() / 100);
+                salary -= upperTax;
                 developer = new SeniorDeveloper(id, newDeveloper.getName(), salary);
                 break;
             default:
